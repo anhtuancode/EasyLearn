@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8FAFC">
+
+    <!-- TOP HEADER -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutReviewHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnBackReview"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Quay lại"
+            android:src="@drawable/ic_custom_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="#1E293B" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Tổng kết &amp; Ôn tập"
+            android:textColor="#0E1B38"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnBackReview"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvScoreBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_badge_streak"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="5dp"
+            android:text="⭐ 0 điểm"
+            android:textColor="#D97706"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/layoutFooterReview"
+        app:layout_constraintTop_toBottomOf="@id/layoutReviewHeader">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- 1. BANNER CHÚC MỪNG HOÀN THÀNH -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#1D61F2"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🎉 Tuyệt vời! Bạn đã đọc xong"
+                        android:textColor="#DBEAFE"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvReviewStoryTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="The Secret in the Attic"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvWordCountSummary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="#2563EB"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="4dp"
+                        android:text="🔖 Đã lưu 4 từ vựng mới vào sổ tay"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 2. MINI-GAME QUIZ TRẮC NGHIỆM 4 ĐÁP ÁN -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="🧠 Thử thách ghi nhớ nhanh"
+                android:textColor="#0E1B38"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardQuizContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#E2E8F0"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <!-- Thanh tiến độ câu hỏi -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tvQuestionProgress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="Câu 1 / 4"
+                            android:textColor="#1D61F2"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <ImageButton
+                            android:id="@+id/btnQuizSpeak"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_alignParentEnd="true"
+                            android:background="@drawable/bg_circle_button"
+                            android:backgroundTint="#EFF6FF"
+                            android:contentDescription="Phát âm từ hỏi"
+                            android:src="@android:drawable/ic_lock_silent_mode_off"
+                            app:tint="#1D61F2" />
+                    </RelativeLayout>
+
+                    <!-- Từ vựng câu hỏi -->
+                    <TextView
+                        android:id="@+id/tvQuizWord"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:text="fragile"
+                        android:textColor="#0E1B38"
+                        android:textSize="28sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvQuizPhonetic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:gravity="center"
+                        android:text="/ˈfrædʒ.əl/"
+                        android:textColor="#64748B"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="14dp"
+                        android:gravity="center"
+                        android:text="Chọn nghĩa tiếng Việt đúng nhất:"
+                        android:textColor="#475569"
+                        android:textSize="13sp" />
+
+                    <!-- 4 NÚT ĐÁP ÁN -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnOption1"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="start|center_vertical"
+                        android:paddingHorizontal="16dp"
+                        android:text="A. Dễ vỡ, mỏng manh"
+                        android:textAllCaps="false"
+                        android:textColor="#1E293B"
+                        android:textSize="15sp"
+                        app:cornerRadius="12dp"
+                        app:strokeColor="#CBD5E1"
+                        app:strokeWidth="1.5dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnOption2"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="start|center_vertical"
+                        android:paddingHorizontal="16dp"
+                        android:text="B. Mùi thơm dịu"
+                        android:textAllCaps="false"
+                        android:textColor="#1E293B"
+                        android:textSize="15sp"
+                        app:cornerRadius="12dp"
+                        app:strokeColor="#CBD5E1"
+                        app:strokeWidth="1.5dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnOption3"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="start|center_vertical"
+                        android:paddingHorizontal="16dp"
+                        android:text="C. Cổ xưa, lâu đời"
+                        android:textAllCaps="false"
+                        android:textColor="#1E293B"
+                        android:textSize="15sp"
+                        app:cornerRadius="12dp"
+                        app:strokeColor="#CBD5E1"
+                        app:strokeWidth="1.5dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnOption4"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:gravity="start|center_vertical"
+                        android:paddingHorizontal="16dp"
+                        android:text="D. Người lạ mặt"
+                        android:textAllCaps="false"
+                        android:textColor="#1E293B"
+                        android:textSize="15sp"
+                        app:cornerRadius="12dp"
+                        app:strokeColor="#CBD5E1"
+                        app:strokeWidth="1.5dp" />
+
+                    <!-- Card thông báo hoàn thành Quiz -->
+                    <LinearLayout
+                        android:id="@+id/layoutQuizCompleted"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingVertical="16dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🏆 Hoàn xuất sắc bài ôn tập!"
+                            android:textColor="#15803D"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvFinalQuizSummary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Bạn trả lời đúng 4/4 từ vựng"
+                            android:textColor="#475569"
+                            android:textSize="14sp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnRetryQuiz"
+                            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="44dp"
+                            android:layout_marginTop="14dp"
+                            android:backgroundTint="#EFF6FF"
+                            android:text="↻ Luyện tập lại"
+                            android:textAllCaps="false"
+                            android:textColor="#1D61F2"
+                            android:textStyle="bold"
+                            app:cornerRadius="12dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 3. DANH SÁCH TỪ VỰNG ĐÃ LƯU TRONG BÀI -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="🔖 Từ vựng đã lưu từ truyện"
+                android:textColor="#0E1B38"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSavedWords"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:nestedScrollingEnabled="false" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- FOOTER QUAY VỀ TRANG CHỦ -->
+    <LinearLayout
+        android:id="@+id/layoutFooterReview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBackToHome"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:backgroundTint="@color/primary_blue"
+            android:text="Hoàn tất &amp; Về trang chủ"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="14dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

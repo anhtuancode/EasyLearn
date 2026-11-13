@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginBottom="10dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:strokeColor="#E2E8F0"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="14dp">
+
+        <!-- Nút loa phát âm TTS -->
+        <ImageButton
+            android:id="@+id/btnSpeakItemWord"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:background="@drawable/bg_circle_button"
+            android:backgroundTint="#EFF6FF"
+            android:contentDescription="Phát âm"
+            android:padding="10dp"
+            android:src="@drawable/ic_custom_volume"
+            app:tint="#1D61F2" />
+
+        <!-- Thông tin từ vựng, phiên âm và nghĩa tiếng Việt -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvItemWord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="aroma"
+                    android:textColor="#0E1B38"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvItemPhonetic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="/əˈrəʊmə/"
+                    android:textColor="#64748B"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvItemMeaning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Mùi thơm dịu, hương vị"
+                android:textColor="#334155"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Chip bấm đổi trạng thái Đã thuộc / Chưa thuộc -->
+        <TextView
+            android:id="@+id/tvMasteredToggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_circle_button"
+            android:backgroundTint="#FEF3C7"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:text="Đang học"
+            android:textColor="#D97706"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <!-- Nút xóa từ khỏi sổ tay -->
+        <ImageButton
+            android:id="@+id/btnDeleteItemWord"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="6dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Xóa từ"
+            android:padding="6dp"
+            android:src="@android:drawable/ic_menu_delete"
+            app:tint="#94A3B8" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

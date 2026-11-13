@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8FAFC">
+
+    <!-- HEADER: Nút Đóng & Thanh tiến độ -->
+    <LinearLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnCloseFlashcard"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            app:tint="#64748B" />
+
+        <ProgressBar
+            android:id="@+id/progressFlashcard"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_weight="1"
+            android:max="100"
+            android:progress="0"
+            android:progressTint="#1D61F2" />
+
+        <TextView
+            android:id="@+id/tvProgressText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0/0"
+            android:textColor="#64748B"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- KHU VỰC THẺ FLASHCARD (Ở giữa màn hình) -->
+    <FrameLayout
+        android:id="@+id/cardContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@id/layoutActions"
+        app:layout_constraintTop_toBottomOf="@id/layoutHeader">
+
+        <!-- MẶT SAU THẺ (Ban đầu bị ẩn và lật ngược -90 độ) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardBack"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="4dp"
+            app:strokeColor="#E2E8F0"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:id="@+id/tvBackMeaning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Mùi thơm dịu"
+                    android:textColor="#16A34A"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="60dp"
+                    android:layout_height="2dp"
+                    android:layout_marginVertical="24dp"
+                    android:background="#E2E8F0" />
+
+                <TextView
+                    android:id="@+id/tvBackWord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="aroma"
+                    android:textColor="#64748B"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvBackPhonetic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="/əˈrəʊmə/"
+                    android:textColor="#94A3B8"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- MẶT TRƯỚC THẺ -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardFront"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="8dp"
+            app:strokeColor="#E2E8F0"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:id="@+id/tvFrontWord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="aroma"
+                    android:textColor="#0E1B38"
+                    android:textSize="36sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btnSpeakFlashcard"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/bg_circle_button"
+                    android:backgroundTint="#EFF6FF"
+                    android:elevation="2dp"
+                    android:src="@drawable/ic_custom_volume"
+                    app:tint="#1D61F2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Chạm vào thẻ để xem nghĩa"
+                    android:textColor="#94A3B8"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </FrameLayout>
+
+    <!-- KHU VỰC NÚT ĐÁNH GIÁ (Ban đầu ẩn, chỉ hiện khi đã lật thẻ) -->
+    <LinearLayout
+        android:id="@+id/layoutActions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="32dp"
+        android:orientation="horizontal"
+        android:visibility="invisible"
+        android:weightSum="2"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnHard"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="#FEE2E2"
+            android:text="🔴 Quên\n(Học lại ngay)"
+            android:textAllCaps="false"
+            android:textColor="#DC2626"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:cornerRadius="16dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEasy"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="#DCFCE7"
+            android:text="🟢 Đã nhớ\n(Lặp lại xa hơn)"
+            android:textAllCaps="false"
+            android:textColor="#16A34A"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:cornerRadius="16dp" />
+    </LinearLayout>
+
+    <!-- MÀN HÌNH HOÀN THÀNH (Nằm đè lên trên cùng, mặc định GONE) -->
+    <LinearLayout
+        android:id="@+id/layoutCompleted"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F8FAFC"
+        android:elevation="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🎉"
+            android:textSize="64sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Hoàn thành xuất sắc!"
+            android:textColor="#0E1B38"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvCompletedSummary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="Bạn đã ôn tập xong 10 từ vựng hôm nay."
+            android:textColor="#64748B"
+            android:textSize="15sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnReturnHome"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="#1D61F2"
+            android:text="Tuyệt vời, về Trang chủ"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="14dp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

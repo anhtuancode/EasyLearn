@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Màu nền và khung thẻ -->
+    <color name="bg_screen">#F6F8FC</color>
+    <color name="white">#FFFFFF</color>
+    <color name="card_highlight_bg">#F0F4FE</color>
+    <color name="border_color">#E5E9F2</color>
+
+    <!-- Màu văn bản -->
+    <color name="text_title">#0E1B38</color>
+    <color name="text_sub">#5B6B8A</color>
+    <color name="text_label">#1B2742</color>
+
+    <!-- Màu thương hiệu chính -->
+    <color name="primary_blue">#1D61F2</color>
+    <color name="primary_blue_pressed">#1548BD</color>
+
+    <!-- Màu badge thông số kiểm tra mật khẩu -->
+    <color name="badge_green_bg">#DCFCE7</color>
+    <color name="badge_green_text">#15803D</color>
+    <color name="badge_gray_bg">#E2E8F0</color>
+    <color name="badge_gray_text">#64748B</color>
+
+    <!-- Màu Divider -->
+    <color name="divider_line">#E8EDF5</color>
+</resources>

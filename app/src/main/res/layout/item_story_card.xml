@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginVertical="8dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="0dp"
+    app:strokeColor="#E2E8F0"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Dòng Header thẻ: Level + Thời gian + Thể loại -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvCardLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_chip_soft_blue"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:text="A1 Beginner"
+                android:textColor="#1D61F2"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCardReadTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="⏱ 3 mins"
+                android:textColor="#64748B"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvCardCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="#F1F5F9"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="3dp"
+                android:text="Đời sống"
+                android:textColor="#475569"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Tiêu đề truyện -->
+        <TextView
+            android:id="@+id/tvCardTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="The Secret in the Attic"
+            android:textColor="#0E1B38"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- Đoạn trích nội dung -->
+        <TextView
+            android:id="@+id/tvCardSnippet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:ellipsize="end"
+            android:lineSpacingExtra="3dp"
+            android:maxLines="2"
+            android:text="Mia found an old wooden box covered in thick dust inside her grandmother's attic..."
+            android:textColor="#64748B"
+            android:textSize="14sp" />
+
+        <!-- Đường kẻ phân cách mờ -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="14dp"
+            android:background="#F1F5F9" />
+
+        <!-- Footer: Dùng LinearLayout chia layout_weight chống đè chữ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvCardFooterStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="Mia tìm thấy chiếc hộp gỗ cũ của bà..."
+                android:textColor="#1D61F2"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btnCardAction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start Reading ➔"
+                android:textColor="#1D61F2"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
